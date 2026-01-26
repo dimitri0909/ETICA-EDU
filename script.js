@@ -1,12 +1,14 @@
-// RUTA ACTUALIZADA: Carpeta documentos
+// RUTA CORREGIDA: Tu carpeta se llama "documento" (singular)
 const PDF_PATH = './documento/documento.pdf'; 
 
+// Motor de PDF.js
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
 const flipSound = document.getElementById('flip-sound');
 
 async function renderMagazine() {
     try {
+        console.log("Intentando cargar PDF desde:", PDF_PATH);
         const loadingTask = pdfjsLib.getDocument(PDF_PATH);
         const pdf = await loadingTask.promise;
         const totalPages = pdf.numPages;
@@ -16,7 +18,7 @@ async function renderMagazine() {
 
         for (let i = 1; i <= totalPages; i++) {
             const page = await pdf.getPage(i);
-            const isHard = (i === 1 || i === totalPages); // Primera y última hoja rígidas
+            const isHard = (i === 1 || i === totalPages);
             
             const pageDiv = $('<div/>').addClass(isHard ? 'hard' : '');
             const canvas = document.createElement('canvas');
@@ -31,7 +33,7 @@ async function renderMagazine() {
             pageDiv.append(canvas);
             magazine.append(pageDiv);
 
-            // Actualizar barra
+            // Progreso
             let percent = Math.round((i / totalPages) * 100);
             $('#progress-fill').css('width', percent + '%');
             $('#progress-text').text(percent + '%');
@@ -40,7 +42,7 @@ async function renderMagazine() {
         $('#loading-container').addClass('hidden');
         $('#magazine-viewport, #controls').removeClass('hidden');
 
-        // Inicializar Turn.js
+        // Configuración de Turn.js
         magazine.turn({
             width: 1000,
             height: 600,
@@ -51,24 +53,24 @@ async function renderMagazine() {
             elevation: 50,
             when: {
                 turning: function() {
-                    flipSound.currentTime = 0;
-                    flipSound.play();
+                    if (flipSound) {
+                        flipSound.currentTime = 0;
+                        flipSound.play();
+                    }
                 }
             }
         });
 
-        // Eventos de botones
         $('#prev-btn').click(() => magazine.turn('previous'));
         $('#next-btn').click(() => magazine.turn('next'));
 
     } catch (error) {
-        console.error("Error detallado:", error);
-        alert("Error: Asegúrate de usar 'Live Server' y que el PDF esté en la carpeta /documentos");
+        console.error("Error al cargar el PDF:", error);
+        alert("No se pudo cargar el PDF. Verifica que el archivo esté en: /documento/documento.pdf y que estés usando un servidor local (Live Server).");
     }
 }
 
 $('#start-btn').on('click', function() {
     $('#welcome-screen').addClass('move-up');
     setTimeout(renderMagazine, 600);
-
 });
