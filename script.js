@@ -1,5 +1,5 @@
 // RUTA CORREGIDA: Tu carpeta se llama "documento" (singular)
-const PDF_PATH = "./documento/documento.pdf"; 
+const PDF_PATH = './documento/documento.pdf'; 
 
 // Motor de PDF.js
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
@@ -74,4 +74,5 @@ $('#start-btn').on('click', function() {
     $('#welcome-screen').addClass('move-up');
     setTimeout(renderMagazine, 600);
 });
+
 
