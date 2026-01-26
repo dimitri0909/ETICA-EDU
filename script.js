@@ -1,5 +1,5 @@
 // RUTA ACTUALIZADA: Carpeta documentos
-const PDF_PATH = './documentos/documento.pdf'; 
+const PDF_PATH = './documento/documento.pdf'; 
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
@@ -70,4 +70,5 @@ async function renderMagazine() {
 $('#start-btn').on('click', function() {
     $('#welcome-screen').addClass('move-up');
     setTimeout(renderMagazine, 600);
+
 });
