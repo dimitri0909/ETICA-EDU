@@ -1,0 +1,75 @@
+body, html {
+    margin: 0; padding: 0;
+    width: 100%; height: 100%;
+    background-color: #1a1a1a;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+/* Pantalla Inicial */
+#welcome-screen {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #1e272e, #000);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 100; color: white; text-align: center;
+    transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.move-up { transform: translateY(-100%); }
+
+#start-btn {
+    padding: 15px 35px; font-size: 1.1rem;
+    cursor: pointer; background-color: #3498db;
+    border: none; color: white; border-radius: 30px;
+    transition: 0.3s; margin-top: 20px;
+}
+
+#start-btn:hover { background-color: #2980b9; transform: scale(1.05); }
+
+/* Cargador */
+#loading-container {
+    position: fixed; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; color: white; z-index: 50;
+}
+
+.progress-bar {
+    width: 300px; height: 8px;
+    background: #333; border-radius: 10px;
+    margin-top: 15px; overflow: hidden;
+}
+
+#progress-fill {
+    width: 0%; height: 100%;
+    background: #3498db; transition: width 0.2s;
+}
+
+/* Revista */
+#magazine-viewport {
+    width: 100%; height: 100%;
+    display: flex; justify-content: center; align-items: center;
+}
+
+#magazine { width: 1000px; height: 600px; }
+.hidden { display: none; }
+
+canvas { width: 100%; height: 100%; display: block; }
+
+/* Navegación */
+#controls {
+    position: fixed; width: 100%; top: 50%;
+    display: flex; justify-content: space-between;
+    padding: 0 30px; box-sizing: border-box;
+    z-index: 10; pointer-events: none;
+}
+
+#controls button {
+    background: rgba(255,255,255,0.1); color: white;
+    border: none; padding: 25px; cursor: pointer;
+    pointer-events: auto; border-radius: 50%;
+    transition: 0.3s; backdrop-filter: blur(5px);
+}
+
+#controls button:hover { background: #3498db; }

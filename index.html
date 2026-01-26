@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revista Digital - Chaski Craft</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/turn.js/3/turn.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+</head>
+<body>
+
+    <div id="welcome-screen">
+        <div class="welcome-content">
+            <h1>Formación Profesional</h1>
+            <p>Presiona el botón para iniciar la lectura</p>
+            <button id="start-btn">Abrir Revista</button>
+        </div>
+    </div>
+
+    <div id="loading-container" class="hidden">
+        <div class="loader-content">
+            <p>Procesando páginas: <span id="progress-text">0%</span></p>
+            <div class="progress-bar"><div id="progress-fill"></div></div>
+        </div>
+    </div>
+
+    <div id="magazine-viewport" class="hidden">
+        <div class="container">
+            <div id="magazine">
+                </div>
+        </div>
+    </div>
+
+    <div id="controls" class="hidden">
+        <button id="prev-btn" title="Anterior">❮</button>
+        <button id="next-btn" title="Siguiente">❯</button>
+    </div>
+
+    <audio id="flip-sound" src="https://www.soundjay.com/misc/sounds/page-flip-01a.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
